@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  valheim:
+    image: phlak/valheim
+    env_file: config/valheim.env
+    environment:
+      TZ: ${TZ:-UTC}
+    ports:
+      - 2456-2458/udp
+    volumes:
+      - ./volumes/valheim:/home/steam/.config/unity3d/IronGate/Valheim
+    labels:
+      com.centurylinklabs.watchtower.scope: valheim-compose
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    env_file: config/watchtower.env
+    environment:
+      WATCHTOWER_SCOPE: valheim-compose
+      TZ: ${TZ:-UTC}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      com.centurylinklabs.watchtower.scope: valheim-compose
+    restart: unless-stopped
