@@ -7,7 +7,7 @@ services:
     environment:
       TZ: ${TZ:-UTC}
     ports:
-      - 2456-2458/udp
+      - 2456-2458:2456-2458/udp
     volumes:
       - ./volumes/valheim:/home/steam/.config/unity3d/IronGate/Valheim
     labels:
