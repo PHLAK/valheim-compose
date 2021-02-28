@@ -40,6 +40,10 @@ the `config/watchtower.env` file. Check out the [Watchtower documentation](https
 (specifically the [Arguments](https://containrrr.dev/watchtower/arguments/) page)
 for more information on the available envionment variables and what they do.
 
-To manually fetch updated images and update the running containers run
+To fetch updated images and update the running containers run
+
+    make update
+
+or manually
 
     docker-compose pull && docker-compose up -d
